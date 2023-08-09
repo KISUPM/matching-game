@@ -1,25 +1,13 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Box, Text } from "@chakra-ui/react";
+import React from "react";
+import CardImg from "./Components/CardImg";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Box w="100vw" minH="100dvh" bg="#36454F" color="#fff" p="1rem">
+      <Text>Hello</Text>
+      <CardImg size={150} />
+    </Box>
   );
 }
 
