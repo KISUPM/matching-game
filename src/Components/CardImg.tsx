@@ -1,52 +1,63 @@
-import { Box } from "@chakra-ui/react";
-import React, { useState } from "react";
+import { Box, Image, Text } from "@chakra-ui/react";
+import React from "react";
 import classes from "./CardImg.module.css";
 
 interface Props {
   size?: number;
+  imageFront: string;
+  imageBack?: string;
+  isOpen: boolean;
+  isMatch: boolean;
+  onClick: () => void;
 }
 
 const CardImg: React.FC<Props> = (props) => {
-  const [isRotate, setIsRotate] = useState(false);
-
-  const toggleCard = () => {
-    // if (!isRotate) {
-    setIsRotate(!isRotate);
-    // }
-  };
-
   return (
     <Box
       w={`${props.size || 100}px`}
       h={`${props.size! * 1.5 || 150}px`}
       cursor={"pointer"}
       userSelect={"none"}
-      onClick={toggleCard}
+      // display={props.isMatch ? "none" : "block"}
+      onClick={() => {
+        props.onClick();
+      }}
     >
       <Box
         position={"relative"}
         w="100%"
         h="100%"
-        transition={"all 0.5s"}
-        transform={isRotate ? "rotateY(180deg)" : "rotateY(0deg)"}
+        transition={"all 0.3s"}
+        className={classes.cardContent}
+        transform={
+          props.isOpen || props.isMatch ? "rotateY(180deg)" : "rotateY(0deg)"
+        }
         border="1px solid black"
       >
         <Box
           className={classes.card}
           transform={"rotateY(180deg)"}
-          bg="red"
-          color="#fff"
+          bg="#fff"
+          color="#000"
+          display="flex"
+          justifyContent={"center"}
+          alignItems={"center"}
+          p="0.25rem"
         >
-          front
+          <Image src={props.imageFront} maxW="100%" maxH="100%" />
         </Box>
         <Box
           className={classes.card}
           bg="#ddd"
           color="#000"
           transition={"transform 0.5s"}
-          top="1rem"
+          _hover={{ opacity: "0.8" }}
         >
-          back
+          {props.imageBack ? (
+            <Image src={props.imageFront} maxW="100%" maxH="100%" />
+          ) : (
+            <Text>back</Text>
+          )}
         </Box>
       </Box>
     </Box>
