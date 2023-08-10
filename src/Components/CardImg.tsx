@@ -32,10 +32,11 @@ const CardImg: React.FC<Props> = (props) => {
         transform={
           props.isOpen || props.isMatch ? "rotateY(180deg)" : "rotateY(0deg)"
         }
+        // _hover={{}}
         border="1px solid black"
       >
         <Box
-          className={classes.card}
+          className={`${classes.card}`}
           transform={"rotateY(180deg)"}
           bg="#fff"
           color="#000"
@@ -47,14 +48,14 @@ const CardImg: React.FC<Props> = (props) => {
           <Image src={props.imageFront} maxW="100%" maxH="100%" />
         </Box>
         <Box
-          className={classes.card}
+          className={`${classes.card} ${classes.block}`}
           bg="#ddd"
           color="#000"
-          transition={"transform 0.5s"}
-          _hover={{ opacity: "0.8" }}
+          transition={"all 0.1s"}
+          _hover={{ boxShadow: "0 0 15px 5px #fff" }}
         >
           {props.imageBack ? (
-            <Image src={props.imageFront} maxW="100%" maxH="100%" />
+            <Image src={props.imageBack} w="100%" h="100%" />
           ) : (
             <Text>back</Text>
           )}

@@ -106,7 +106,7 @@ function App() {
   }, [match]);
 
   return (
-    <Box w="100vw" minH="100dvh" bg="#36454F" color="#fff" p="1rem">
+    <Box w="100vw" minH="100dvh" bg="#1F2933" color="#fff" p="1rem">
       <Box w="100%">
         <Heading textAlign={"center"}>Matching Game</Heading>
       </Box>
@@ -117,18 +117,24 @@ function App() {
       </Center>
       <Grid
         templateColumns={"repeat(4,1fr)"}
-        gap="1rem"
+        gap="2rem"
         w="fit-content"
         m="auto"
         my="1rem"
+        p="2rem"
+        border="1px solid #fff2"
+        borderRadius={"15px"}
+        bg="#fff2"
       >
         {deck.map((i, index) => {
+          const background = "/img/cardBackground2.jpg";
           return (
             <CardImg
               imageFront={i.image}
               key={index}
               isMatch={match.some((a) => a.type === i.type)}
               isOpen={openCard.includes(index)}
+              imageBack={background}
               onClick={() => {
                 handleClick(index);
               }}
