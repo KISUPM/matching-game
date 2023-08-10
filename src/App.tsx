@@ -93,7 +93,7 @@ function App() {
   const complete = async () => {
     await sleep(0.5);
     const best = localStorage.getItem("best");
-    if (best === null || best > move.toString()) {
+    if (best === null || Number(best) > move) {
       localStorage.setItem("best", move.toString());
     }
     alert("Complete!");
@@ -143,10 +143,10 @@ function App() {
         })}
       </Grid>
       <Center gap={"1rem"}>
-        <Text>Move:{move}</Text>
+        <Text>Move: {move}</Text>
         <Text display="flex" alignItems={"center"}>
           <AiOutlineTrophy />
-          Best Move:{localStorage.getItem("best") || 0}
+          Best Move: {localStorage.getItem("best") || 0}
         </Text>
       </Center>
     </Box>
