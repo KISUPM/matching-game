@@ -116,7 +116,7 @@ function App() {
         </Button>
       </Center>
       <Grid
-        templateColumns={{ base: "repeat(2,1fr)", md: "repeat(4,1fr)" }}
+        templateColumns={"repeat(4,1fr)"}
         gap="2rem"
         w="fit-content"
         m="auto"
